@@ -6,6 +6,8 @@ description = ""
 authors = [
     {name = "ssghost", email = "ssprof0@gmail.com"},
 ]
-dependencies = []
-requires-python = ">=3.8"
+dependencies = [
+    "vectorbt>=0.25.5",
+]
+requires-python = ">=3.8,<3.9"
 license = {text = "MIT"}
