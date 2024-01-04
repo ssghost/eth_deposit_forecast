@@ -520,7 +520,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 lock_version = "4.2"
 cross_platform = true
 groups = ["default"]
-content_hash = "sha256:3cad4b475b5f319e6b55abca3600f9300fe4483aa716fef25a52485deb8029c0"
+content_hash = "sha256:ed9529cd224cacf893d4b34ad56a01826ee44d76e63bd22c5a1aa59f872549da"
 
 [metadata.files]
 "appnope 0.1.3" = [

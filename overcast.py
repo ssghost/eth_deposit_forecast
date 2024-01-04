@@ -1,17 +1,17 @@
 import vectorbt as vbt
+import pandas as pd
+import json
 
-
-data = vbt.YFData.pull("ETH-USD")
 def find_patterns(data):
-    price = data.hlc3
-    pattern = price.values[-LAST_N_BARS:]
-    pattern_ranges = price.vbt.find_pattern(
-        pattern=pattern,
+    pattern_ranges = data.hlc3.vbt.find_pattern(
+        pattern=data.close.iloc[-10:],
         rescale_mode="rebase",
-        overlap_mode="allow",
-        wrapper_kwargs=dict(freq=TIMEFRAME)
-    )
-    pattern_ranges = pattern_ranges.status_closed
+        overlap_mode="allow"
+    ).status_closed
     return pattern_ranges
 
-pattern_ranges = find_patterns(data)
+if __name__=='__main__':
+    data = vbt.YFData.pull("ETH-USD")
+    pattern_ranges = find_patterns(data)
+    with open("castdata.json", 'w') as f:
+        json.dump(pattern_ranges.to_json(), f)
