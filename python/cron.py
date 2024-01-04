@@ -1,7 +1,7 @@
 import schedule
 import time
 
-from forecast import *
+from python.forecast import *
 
 if __name__ == '__main__':
     schedule.every().day.at("11:00").do(forecast)

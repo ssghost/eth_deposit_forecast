@@ -9,7 +9,7 @@ def forecast() -> None:
         rescale_mode="rebase",
         overlap_mode="allow"
     ).status_closed
-    with open("castdata.json", 'w') as f:
+    with open("../castdata.json", 'w') as f:
         json.dump(pattern_ranges.to_json(), f)
 
 if __name__ == '__main__':
