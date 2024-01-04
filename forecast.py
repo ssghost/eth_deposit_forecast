@@ -2,7 +2,7 @@ import vectorbt as vbt
 import pandas as pd
 import json
 
-def main() -> None:
+def forecast() -> None:
     data = vbt.YFData.pull("ETH-USD")
     pattern_ranges = data.hlc3.vbt.find_pattern(
         pattern=data.close.iloc[-10:],
@@ -13,5 +13,5 @@ def main() -> None:
         json.dump(pattern_ranges.to_json(), f)
 
 if __name__ == '__main__':
-    main()
+    forecast()
     
