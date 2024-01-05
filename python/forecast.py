@@ -8,7 +8,7 @@ def forecast() -> None:
         pattern=data.close.iloc[-10:],
         rescale_mode="rebase",
         overlap_mode="allow"
-    ).status_closed
+    ).status_closed.head(n=5)
     with open("../castdata.json", 'w') as f:
         json.dump(pattern_ranges.to_json(), f)
 
