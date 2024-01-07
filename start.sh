@@ -1,1 +1,1 @@
-python python/cron.py && npm run typescript/deploy.ts
+python python/cron.py && npx hardhat run typescript/deploy.ts --network localhost
