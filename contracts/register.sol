@@ -34,7 +34,7 @@ contract UpkeepIDConditional {
         i_register = register;
     }
 
-    function registerAndShowID(RegistrationParams memory params) public returns (uint256 upkeepID) {
+    function registerAndShowID(RegistrationParams memory params) public returns (uint256) {
         i_link.approve(address(i_register), params.amount);
         uint256 upkeepID = i_registrar.registerUpkeep(params);
         if (upkeepID != 0) {
@@ -42,5 +42,6 @@ contract UpkeepIDConditional {
         } else {
             revert("auto-approve disabled");
         }
+        return upkeepID;
     }
 }
