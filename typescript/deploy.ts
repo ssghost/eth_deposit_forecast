@@ -31,7 +31,9 @@ export async function deploy() {
 
     console.log(`Deployment completed. Upkeep ID is ${upkeepID}.`);
 
-    return [c_address, upkeepID];
+    const s_data = await caster.showData();
+
+    return [c_address, upkeepID, s_data];
 }
 
 deploy().catch((error) => {

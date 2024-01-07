@@ -32,4 +32,8 @@ contract Caster is AutomationCompatibleInterface {
             console.log(castdata);
         }
     }
+
+    function showData() view returns (bytes32 calldata castdata) {
+        return castdata;
+    }
 }
