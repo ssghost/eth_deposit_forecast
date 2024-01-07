@@ -34,7 +34,7 @@ contract UpkeepIDConditional {
         i_register = register;
     }
 
-    function registerAndShowID(RegistrationParams memory params) public {
+    function registerAndShowID(RegistrationParams memory params) public returns (uint256 upkeepID) {
         i_link.approve(address(i_register), params.amount);
         uint256 upkeepID = i_registrar.registerUpkeep(params);
         if (upkeepID != 0) {

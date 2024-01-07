@@ -1,0 +1,1 @@
+python python/cron.py && npm run typescript/deploy.ts
