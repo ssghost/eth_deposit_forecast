@@ -14,7 +14,7 @@ export interface RegistrationParams {
     amount: number;
 }
 
-async function deploy() {
+export async function deploy() {
 	const caster = await ethers.deployContract("Caster", [], {});
 
 	await caster.waitForDeployment();
@@ -30,6 +30,8 @@ async function deploy() {
 	const upkeepID = await register.registerAndShowID(params);
 
     console.log(`Deployment completed. Upkeep ID is ${upkeepID}.`);
+
+    return [c_address, upkeepID];
 }
 
 deploy().catch((error) => {
