@@ -1,16 +1,12 @@
-import vectorbt as vbt
-import pandas as pd
+from train import *
 import json
 
 def forecast() -> None:
-    data = vbt.YFData.pull("ETH-USD")
-    pattern_ranges = data.hlc3.vbt.find_pattern(
-        pattern=data.close.iloc[-10:],
-        rescale_mode="rebase",
-        overlap_mode="allow"
-    ).status_closed.head(n=5)
+    model = train()
+    e_data = vbt.YFData.download("ETH-USD", start="5 days ago UTC").get('Close')
+    predictions = model.predict(e_data.test_dataloader())
     with open("../castdata.json", 'w') as f:
-        json.dump(pattern_ranges.to_json(), f)
+        json.dump(predictions.to_json(), f)
 
 if __name__ == '__main__':
     forecast()
