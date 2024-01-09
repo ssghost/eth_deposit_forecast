@@ -1,1 +1,3 @@
-# eth_deposit_overcast
+# Eth_Deposit_Forecast
+
+## Usage: `$>sh start.sh`
