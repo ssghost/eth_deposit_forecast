@@ -4,7 +4,7 @@ pragma solidity ^0.8.19;
 import "@chainlink/contracts/src/v0.8/automation/AutomationCompatible.sol";
 import "@jsmnSol/JsmnSolLib.sol";
 
-contract Caster is AutomationCompatibleInterface {
+contract Caster is AutomationCompatibleInterface, Ownable {
     bytes32 public _castdata = "";
     uint256 public _interval = 1 days;
 
@@ -33,7 +33,14 @@ contract Caster is AutomationCompatibleInterface {
         }
     }
 
-    function showData() view returns (bytes32 calldata castdata) {
+    function showData() view onlyOwner returns (bytes32 calldata castdata) {
+        return castdata;
+    }
+
+    function payAndShow(uint96 _amount) payable returns (bytes32 calldata castdata) {
+        require(_amount >= 0.0001 ether);
+        (bool success, ) = owner.call{value: _amount}("");
+        require(success);
         return castdata;
     }
 }
