@@ -1,4 +1,4 @@
-from train import *
+import vectorbt as vbt
 from torch import load
 import json
 

@@ -1,6 +1,6 @@
 import schedule
 import time
-
+from python.train import *
 from python.forecast import *
 
 if __name__ == '__main__':
