@@ -39,6 +39,7 @@ contract Caster is AutomationCompatibleInterface, Ownable {
 
     function payAndShow(uint96 _amount) payable returns (bytes32 calldata castdata) {
         require(_amount >= 0.0001 ether);
+        require(msg.sender.value >= _amount);
         (bool success, ) = owner.call{value: _amount}("");
         require(success);
         return castdata;
